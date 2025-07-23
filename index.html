@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecoplaza YESCORD</title>
+    <meta name="description" content="EcoPlaza YESCORD – plaza sostenible en Río Partido, Espaillat.">
+    <meta name="keywords" content="plaza, turismo, río partido, espaillat, sostenible, tiendas, restaurantes">
+    <meta name="author" content="Equipo YESCORD">
+    <!-- AOS Animate On Scroll CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --azul: #0074D9;
+            --verde: #02851b;
+            --gris: #f4f4f4;
+            --negro: #222;
+            --blanco: #fff;
+            --yescord: #2C8E6F;
+            --ecoplaza: #00b894;
+        }
+        /* Animación de color para Eco Plaza */
+        .ecoplaza-anim {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-right: 0.5rem;
+            opacity: 0.85;
+            font-family: sans-serif;
+            animation: ecoplazaColor 3s infinite alternate;
+            transition: color 0.3s;
+        }
+        @keyframes ecoplazaColor {
+            0% { color: var(--ecoplaza); }
+            50% { color: var(--azul); }
+            100% { color: var(--verde); }
+        }
+        .yescord-logo {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: var(--yescord);
+            letter-spacing: 2.5px;
+            text-shadow: 0 2px 12px #2C8E6F22;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            text-transform: uppercase;
+            line-height: 1;
+            transition: color 0.3s;
+        }
+        .yescord-logo.alt {
+            color: var(--ecoplaza);
+            text-shadow: 0 2px 12px #00b89433;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--gris);
+            color: var(--negro);
+        }
+        body, p, .desc-local, .section, .card, .card-tienda, .card-equipo, .mv-card, .faq-item, .faq-accordion-panel, .testimonio-card, .horarios-box, .servicios-box, .footer-links, ul, ol, li {
+            text-align: justify !important;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+        }
+        .card-tienda h3, .titulo-local, .card-equipo h3, .mv-card h3 {
+            text-align: center !important;
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 2px 12px #0001;
+            border-bottom: 1.5px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 2.5rem;
+            transition: box-shadow 0.2s, background 0.2s;
+        }
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            align-items: flex-end;
+        }
+        .navbar-logo img {
+            height: 48px;
+            width: auto;
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .navbar-logo span {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #00b894;
+            letter-spacing: 2px;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .navbar-links a {
+            color: #222;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.13rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 6px;
+            transition: background 0.18s, color 0.18s;
+        }
+        .navbar-links a:hover, .navbar-links a.active {
+            background: #00b89411;
+            color: #00b894;
+        }
+        header {
+            background: linear-gradient(90deg, var(--azul) 60%, var(--verde) 100%);
+            color: #fff;
+            padding: 1.5rem 0 1rem 0;
+            text-align: center;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            padding: 0.5rem 0;
+            transition: box-shadow 0.2s;
+        }
+        nav a {
+            color: var(--azul);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: var(--verde);
+        }
+        .banner {
+            background: linear-gradient(90deg, var(--verde) 60%, var(--azul) 100%);
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .section {
+            max-width: 1100px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 2rem;
+        }
+        .section h2 {
+            color: var(--azul);
+        }
+        .tiendas, .restaurantes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--gris);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--verde);
+        }
+        footer {
+            background: var(--azul);
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem 0 1rem 0;
+            margin-top: 2rem;
+        }
+        .social {
+            margin: 1rem 0;
+        }
+        .social a {
+            color: #fff;
+            margin: 0 0.5rem;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+        header h1 {
+            animation: titulo-movimiento 2.5s ease-in-out infinite alternate;
+        }
+        @keyframes titulo-movimiento {
+            0% {letter-spacing: 0.1rem; color: var(--azul);}
+            100% {letter-spacing: 0.3rem; color: var(--verde);}
+        }
+        header p {
+            animation: eslogan-movimiento 3s ease-in-out infinite alternate;
+        }
+        @keyframes eslogan-movimiento {
+            0% {opacity: 1; transform: translateY(0px);}
+            100% {opacity: 0.85; transform: translateY(8px);}
+        }
+        .locales-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .locales-grid .card {
+            background: var(--gris);
+            border-radius: 10px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .locales-grid .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+        }
+        .locales-grid img {
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+            .section {
+                padding: 1.2rem;
+            }
+            .locales-grid, .mvvalores-grid, .testimonios-grid, .horarios-servicios-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+        }
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0.5rem 0.5rem;
+            }
+            .navbar-links {
+                display: none;
+                overflow-x: auto;
+                white-space: nowrap;
+                width: 100vw;
+                max-width: 100vw;
+                background: #fff;
+                box-shadow: 0 2px 8px #00b89411;
+                border-radius: 0 0 12px 12px;
+                padding-bottom: 0.5rem;
+                scrollbar-width: thin;
+            }
+            .navbar-links.active {
+                display: flex;
+                flex-direction: row;
+                gap: 1.2rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .navbar-links a {
+                min-width: 110px;
+                text-align: center;
+                font-size: 1.1rem;
+                padding: 0.7rem 0.5rem;
+                border-radius: 8px;
+                background: #f8f8f8;
+                margin: 0.2rem 0;
+            }
+            .navbar-logo {
+                margin-bottom: 0.5rem;
+            }
+            .section {
+                padding: 0.7rem;
+            }
+            .locales-grid, .mvvalores-grid, .testimonios-grid, .horarios-servicios-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        @media (max-width: 500px) {
+            .navbar-logo img {
+                height: 36px;
+            }
+            .navbar-logo span, .yescord-logo {
+                font-size: 1.2rem !important;
+            }
+            .banner-titulo {
+                font-size: 1.5rem;
+            }
+            .banner-eslogan {
+                font-size: 1rem;
+            }
+            .section h2 {
+                font-size: 1.1rem;
+            }
+            .card, .card-equipo, .mv-card {
+                padding: 0.7rem 0.4rem;
+            }
+            .img-local, .img-equipo {
+                max-width: 70px;
+                height: 70px;
+            }
+            .footer-social {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+        }
+        @media (max-width: 400px) {
+            .navbar {
+                padding: 0.2rem 0.1rem;
+            }
+            .section {
+                padding: 0.3rem;
+            }
+            .banner-titulo {
+                font-size: 1.1rem;
+            }
+        }
+        /* Menú hamburguesa para móviles */
+        @media (max-width: 700px) {
+            .navbar-links {
+                display: none;
+                overflow-x: auto;
+                white-space: nowrap;
+                width: 100vw;
+                max-width: 100vw;
+                background: #fff;
+                box-shadow: 0 2px 8px #00b89411;
+                border-radius: 0 0 12px 12px;
+                padding-bottom: 0.5rem;
+                scrollbar-width: thin;
+            }
+            .navbar-links.active {
+                display: flex;
+                flex-direction: row;
+                gap: 1.2rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 2rem;
+                color: var(--azul);
+                cursor: pointer;
+                margin-left: auto;
+            }
+        }
+        @media (min-width: 701px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+        .horarios-servicios-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .horarios-box, .servicios-box {
+            flex: 1 1 300px;
+            background: var(--gris);
+            border-radius: 10px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 1rem;
+        }
+        .servicios-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .servicio-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 100px;
+        }
+        .servicio-item p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1rem;
+        }
+        .mvvalores-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .mv-card {
+            background: var(--gris);
+            border-radius: 10px;
+            padding: 2rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            text-align: center;
+            flex: 1 1 260px;
+            max-width: 340px;
+            min-width: 220px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .mv-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+        }
+        .mv-card h3 {
+            margin-top: 1rem;
+            color: var(--azul);
+        }
+        .mv-card ul {
+            padding-left: 1.2rem;
+        }
+        .testimonios-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .testimonio-card {
+            background: #fff;
+            border-radius: 20px 20px 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 1.5rem 1.2rem;
+            max-width: 320px;
+            min-width: 220px;
+            font-style: italic;
+            position: relative;
+        }
+        .testimonio-card:before {
+            content: '“';
+            font-size: 2.5rem;
+            color: var(--verde);
+            position: absolute;
+            left: 15px;
+            top: 5px;
+        }
+        .testimonio-card span {
+            display: block;
+            margin-top: 1rem;
+            font-weight: bold;
+            color: var(--azul);
+            font-style: normal;
+        }
+        .footer-social {
+            margin-bottom: 1rem;
+        }
+        .footer-icon {
+            font-size: 2rem;
+            margin: 0 0.7rem;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+            vertical-align: middle;
+        }
+        .footer-icon:hover {
+            color: var(--verde);
+        }
+        .banner-principal {
+            width: 100%;
+            min-height: 340px;
+            background: linear-gradient(120deg, var(--azul) 60%, var(--verde) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .banner-content {
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+            padding: 2.5rem 1rem 2rem 1rem;
+        }
+        .banner-titulo {
+            font-size: 3.2rem;
+            font-weight: bold;
+            margin-bottom: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--blanco);
+            text-shadow: 0 4px 24px rgba(0,0,0,0.18);
+            animation: titulo-animado 2.2s infinite alternate cubic-bezier(.4,0,.2,1);
+        }
+        @keyframes titulo-animado {
+            0% {transform: scale(1) rotate(-1deg); letter-spacing: 2px;}
+            100% {transform: scale(1.08) rotate(2deg); letter-spacing: 8px;}
+        }
+        .banner-eslogan {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--verde);
+            text-shadow: 0 2px 12px rgba(0,0,0,0.10);
+            animation: eslogan-animado 2.5s infinite alternate;
+        }
+        @keyframes eslogan-animado {
+            0% {opacity: 1; letter-spacing: 1px;}
+            100% {opacity: 0.85; letter-spacing: 6px;}
+        }
+        .banner-desc {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+            color: #e0f7fa;
+            animation: desc-animado 3s infinite alternate;
+        }
+        @keyframes desc-animado {
+            0% {opacity: 0.8;}
+            100% {opacity: 1;}
+        }
+        @media (max-width: 600px) {
+            .banner-titulo {
+                font-size: 2rem;
+            }
+            .banner-eslogan {
+                font-size: 1.1rem;
+            }
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: var(--gris);
+            border-radius: 10px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .faq-item h4 {
+            margin-top: 0;
+            color: var(--azul);
+        }
+        .faq-item p {
+            margin-bottom: 0;
+        }
+        @media (max-width: 600px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .faq-accordion {
+            max-width: 700px;
+            margin: 2rem auto 0 auto;
+        }
+        .faq-accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            background: var(--gris);
+        }
+        .faq-accordion-btn {
+            width: 100%;
+            background: var(--azul);
+            color: #fff;
+            border: none;
+            outline: none;
+            text-align: left;
+            padding: 1rem 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .faq-accordion-btn:hover, .faq-accordion-btn.active {
+            background: var(--verde);
+        }
+        .faq-accordion-panel {
+            padding: 0 1.2rem 1rem 1.2rem;
+            display: none;
+            background: var(--gris);
+        }
+        .faq-accordion-panel.show {
+            display: block;
+            animation: fadeIn 0.4s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .img-local {
+            max-width: 110px;
+            display: block;
+            margin: 0 auto 14px auto;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px #0001;
+            background: transparent;
+        }
+        .titulo-local {
+            color: #00b894;
+            font-size: 1.18rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+        .desc-local {
+            font-size: 1.04rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .locales-grid .card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 18px #0002;
+            padding: 1.5rem 1rem 1.2rem 1rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+            border: 1.5px solid #f0f0f0;
+        }
+        .locales-grid .card:hover {
+            box-shadow: 0 8px 32px #00b89422;
+            transform: translateY(-6px) scale(1.03);
+        }
+        .equipo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 2.2rem;
+            margin-top: 2.5rem;
+            justify-items: center;
+        }
+        .card-equipo {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 18px #00b89422;
+            padding: 1.5rem 1rem 1.2rem 1rem;
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+            border: 1.5px solid #f0f0f0;
+            max-width: 260px;
+        }
+        .card-equipo:hover {
+            box-shadow: 0 8px 32px #00b89433;
+            transform: translateY(-6px) scale(1.04);
+        }
+        .img-equipo {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 12px #0001;
+            border: 3px solid #00b89433;
+            background: #f8f8f8;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card-equipo:hover .img-equipo {
+            transform: scale(1.07) rotate(-2deg);
+            box-shadow: 0 6px 24px #00b89433;
+        }
+        .profesion {
+            color: #555;
+            font-size: 0.98rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+        }
+        /* Nuevos estilos para el directorio de tiendas */
+        .tiendas-directorio {
+            margin-top: 2rem;
+        }
+        .nivel-titulo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--azul);
+            margin: 1.2rem 0 0.5rem 0;
+            text-align: left;
+            letter-spacing: 1px;
+        }
+        .nivel-tarjetas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-tienda {
+            flex: 1 1 220px;
+            max-width: 260px;
+            min-width: 200px;
+            background: var(--gris);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            text-align: justify;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card-tienda h3 {
+            margin-top: 0.7rem;
+            color: var(--verde);
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .img-tienda {
+            max-width: 100px;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        @media (max-width: 900px) {
+            .nivel-tarjetas {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .card-tienda {
+                max-width: 100%;
+                min-width: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="main-navbar">
+        <div class="navbar-logo" style="gap:0.5rem; align-items: flex-end;">
+            <img src="fondo.png" alt="Logo YESCORD sin fondo" style="height:54px; width:auto; background:transparent; border-radius:0; box-shadow:none; margin-right:0.7rem;">
+            <span class="yescord-logo" style="font-size:2.2rem; font-weight:900; color:#00b894; letter-spacing:2px;">EcoPlaza YESCORD</span>
+        </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
+        <div class="navbar-links" id="navbar-links" style="gap:1.5rem;">
+            <a href="#inicio" class="nav-link">Inicio</a>
+            <a href="#locales" class="nav-link">Tiendas</a>
+            <a href="#gastronomia" class="nav-link">Restaurantes</a>
+            <a href="#horarios" class="nav-link">Servicios</a>
+            <a href="#nosotros" class="nav-link">Sobre Nosotros</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
+        </div>
+    </nav>
+    <header id="inicio" style="background: #fff; min-height: 420px; display: flex; align-items: center; justify-content: center;">
+        <div style="padding: 4rem 2rem 3rem 2rem; border-radius: 28px; box-shadow: none; text-align: center; max-width: 540px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <img src="fondo.png" alt="Logo YESCORD sin fondo" style="height:340px; width:auto; background:transparent; border-radius:0; box-shadow:none; margin-bottom:2.2rem; margin-top:0.5rem;">
+            <p style="font-size:1.45rem; color:#2C8E6F; font-weight:700; margin-bottom:1.7rem; text-shadow:0 2px 12px #fff9; letter-spacing:1.2px;">Tu satisfacción, nuestra misión</p>
+            <a href="#locales" style="background:#00b894; color:#fff; padding:1.1rem 2.7rem; border-radius:36px; font-size:1.22rem; font-weight:700; text-decoration:none; box-shadow:0 4px 18px #00b89444; transition:background 0.2s;">Descubre las tiendas</a>
+        </div>
+    </header>
+    <div class="banner" data-aos="zoom-in">
+        <h2>¡Descubre una experiencia de compras sostenible!</h2>
+        <p>Las mejores marcas, servicios y experiencias en un solo lugar, con un compromiso ambiental.</p>
+    </div>
+    <section class="section" id="tiendas" data-aos="fade-right">
+        <h2>Directorio de Tiendas</h2>
+        <div class="tiendas-directorio">
+          <div class="nivel-titulo">Nivel 1</div>
+          <div class="nivel-tarjetas">
+            <div class="card card-tienda">
+                <img src="Minimarketelbambu.png" alt="Mini-market El Bambú Logo" class="img-tienda">
+                <h3>Mini-market: El Bambú</h3>
+                <button class="ver-mas-btn" data-tienda="bambu">Ver más</button>
+            </div>
+            <div class="card card-tienda">
+                <img src="heladosyeyos.png" alt="Heladería Don Yeyo Logo" class="img-tienda">
+                <h3>Heladería Don Yeyo</h3>
+                <button class="ver-mas-btn" data-tienda="helados">Ver más</button>
+            </div>
+            <div class="card card-tienda">
+                <img src="restaurantealjenis.png" alt="Restaurante Aljenis Logo" class="img-tienda">
+                <h3>Restaurante: Aljenis</h3>
+                <button class="ver-mas-btn" data-tienda="aljenis">Ver más</button>
+            </div>
+            <div class="card card-tienda">
+                <img src="ecocafe.png" alt="EcoCafé Logo" class="img-tienda">
+                <h3>EcoCafé</h3>
+                <button class="ver-mas-btn" data-tienda="ecocafe">Ver más</button>
+            </div>
+          </div>
+          <div class="nivel-titulo">Nivel 2</div>
+          <div class="nivel-tarjetas">
+            <div class="card card-tienda">
+                <img src="carollogo.png" alt="Farmacia Carol Logo" class="img-tienda">
+                <h3>Farmacia: Carol</h3>
+                <button class="ver-mas-btn" data-tienda="carol">Ver más</button>
+            </div>
+            <div class="card card-tienda">
+                <img src="delfindemocalogo.png" alt="Delfin de Moca Logo" class="img-tienda">
+                <h3>Tienda de artículos acuáticos: Delfin de Moca</h3>
+                <button class="ver-mas-btn" data-tienda="delfin">Ver más</button>
+            </div>
+          </div>
+        </div>
+        <!-- Modal para detalles de tienda -->
+        <div id="modal-tienda" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:2000; align-items:center; justify-content:center;">
+          <div style="background:#fff; border-radius:12px; max-width:400px; width:90%; padding:2rem; position:relative;">
+            <button id="cerrar-modal-tienda" style="position:absolute; top:10px; right:15px; background:none; border:none; font-size:1.5rem; cursor:pointer;">&times;</button>
+            <div id="contenido-modal-tienda"></div>
+          </div>
+        </div>
+    </section>
+    <!-- Sección Equipo Directivo -->
+    <section class="section" id="equipo-directivo" data-aos="fade-up">
+        <h2 style="text-align:center;">Equipo Directivo de Eco Plaza YESCORD</h2>
+        <div class="equipo-grid">
+            <div class="card-equipo">
+                <img src="Scarlet.png.png" alt="Scarlet Castillo" class="img-equipo" onerror="this.onerror=null;this.src='generico-mujer.png';" />
+                <h3>Scarlet Castillo</h3>
+                <div class="profesion"><strong>Gerente General</strong></div>
+                <p>Ingeniera Agrónoma, Máster en Gestión Ambiental y Emprendimiento Sostenible.</p>
+            </div>
+            <div class="card-equipo">
+                <img src="Oliver.png.png" alt="Oliver de la Rosa" class="img-equipo" onerror="this.onerror=null;this.src='generico-hombre.png';" />
+                <h3>Oliver de la Rosa</h3>
+                <div class="profesion"><strong>Gerente de Operaciones</strong></div>
+                <p>Lic. en Administración Ambiental, Máster en Innovación y Emprendimiento.</p>
+            </div>
+            <div class="card-equipo">
+                <img src="Cesar.png.png" alt="César Augusto Acosta" class="img-equipo" onerror="this.onerror=null;this.src='generico-hombre.png';" />
+                <h3>César Augusto Acosta</h3>
+                <div class="profesion"><strong>Gerente de Mercadeo y Publicidad</strong></div>
+                <p>Lic. en Mercadeo, Máster en Emprendimiento y Sostenibilidad.</p>
+            </div>
+            <div class="card-equipo">
+                <img src="Danyelin.png.png" alt="Danyelin Madeleine Rodríguez" class="img-equipo" onerror="this.onerror=null;this.src='generico-mujer.png';" />
+                <h3>Danyelin Madeleine Rodríguez</h3>
+                <div class="profesion"><strong>Gerente de Seguridad</strong></div>
+                <p>Lic. en Derecho, Máster en Gestión de Proyectos Sostenibles.</p>
+            </div>
+            <div class="card-equipo">
+                <img src="Rut.png.png" alt="Rut Soto Pujols" class="img-equipo" onerror="this.onerror=null;this.src='generico-mujer.png';" />
+                <h3>Rut Soto Pujols</h3>
+                <div class="profesion"><strong>Gerente Financiera</strong></div>
+                <p>Lic. en Contabilidad, Máster en Finanzas Sostenibles.</p>
+            </div>
+            <div class="card-equipo">
+                <img src="Yoheli.png.png" alt="Yoheli Lugo Guzmán" class="img-equipo" onerror="this.onerror=null;this.src='generico-mujer.png';" />
+                <h3>Yoheli Lugo Guzmán</h3>
+                <div class="profesion"><strong>Encargada de Mantenimiento</strong></div>
+                <p>Ingeniera Ambiental, Máster en Gestión de Infraestructura Sostenible.</p>
+            </div>
+            <div class="card-equipo">
+                <img src="Emely.png.png" alt="Emely Encarnación" class="img-equipo" onerror="this.onerror=null;this.src='generico-mujer.png';" />
+                <h3>Emely Encarnación</h3>
+                <div class="profesion"><strong>Coordinadora de Atención al Cliente</strong></div>
+                <p>Lic. en Psicología, Máster en Emprendimiento Social y Sostenible.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="gastronomia" data-aos="fade-left">
+        <h2>Restaurante y Heladería</h2>
+        <div class="restaurantes">
+            <div class="card">
+                <h3>Restaurante: Aljenis</h3>
+                <p>Nivel 1</p>
+                <p>Comida criolla y menú variado.</p>
+            </div>
+            <div class="card">
+                <h3>Heladería Don Yeyo</h3>
+                <p>Nivel 1</p>
+                <p>Helados artesanales y postres fríos.</p>
+            </div>
+            <div class="card">
+                <h3>EcoCafé</h3>
+                <p>Nivel 1</p>
+                <p>Café orgánico y repostería artesanal.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="horarios" data-aos="fade-right">
+        <h2>Horarios y Servicios</h2>
+        <div class="horarios-servicios-grid">
+            <div class="horarios-box">
+                <h3>Horarios</h3>
+                <ul>
+                    <li><strong>Lunes a viernes:</strong> 10:00 a.m. a 9:00 p.m.</li>
+                    <li><strong>Sábados:</strong> 9:00 a.m. a 9:00 p.m.</li>
+                    <li><strong>Domingos y feriados:</strong> 10:00 a.m. a 8:00 p.m.</li>
+                </ul>
+            </div>
+            <div class="servicios-box">
+                <h3>Servicios</h3>
+                <div class="servicios-icons">
+                    <div class="servicio-item">
+                        <span style="font-size:2rem;">🅿️</span>
+                        <p>Estacionamiento</p>
+                    </div>
+                    <div class="servicio-item">
+                        <span style="font-size:2rem;">🏧</span>
+                        <p>Cajeros automáticos</p>
+                    </div>
+                    <div class="servicio-item">
+                        <span style="font-size:2rem;">🚲</span>
+                        <p>Zona de bicicletas</p>
+                    </div>
+                    <div class="servicio-item">
+                        <span style="font-size:2rem;">📶</span>
+                        <p>Wi-Fi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="nosotros" data-aos="fade-left">
+        <h2>Sobre Nosotros</h2>
+        <p>YESCORD es un centro comercial innovador y sostenible, diseñado para responder a las necesidades tanto de la comunidad local como del creciente flujo turístico que visita el impresionante Río Partido, en la provincia Espaillat, República Dominicana.</p>
+        <p>Somos un grupo de profesionales emprendedores que compartimos una visión común: desarrollar un espacio que integre comodidad, funcionalidad, identidad local y conciencia ambiental. Cada uno de nosotros aporta experiencia en distintas áreas como negocios, arquitectura, gestión ambiental, turismo y más, lo que nos permite ofrecer un proyecto comercial sólido, diverso y bien estructurado.</p>
+        <p>En YESCORD encontrarás servicios esenciales como farmacia, mini market, heladería artesanal, comedor criollo, tiendas temáticas y cajeros automáticos, todo en un ambiente moderno y adaptado al contexto turístico y ecológico de la zona.</p>
+    </section>
+    <section class="section" id="mision-vision-valores">
+        <h2 style="text-align:center;">Misión, Visión y Valores</h2>
+        <div class="mvvalores-grid">
+            <div class="mv-card">
+                <div style="font-size:2.5rem; text-align:center; margin-bottom:0.5rem;">🎯</div>
+                <h3>Misión</h3>
+                <p>Ofrecer un espacio comercial sostenible y moderno que satisfaga las necesidades de la comunidad y los visitantes, promoviendo el desarrollo local y el respeto por el entorno natural.</p>
+            </div>
+            <div class="mv-card">
+                <div style="font-size:2.5rem; text-align:center; margin-bottom:0.5rem;">👁️</div>
+                <h3>Visión</h3>
+                <p>Ser la plaza comercial líder en sostenibilidad y experiencia turística en la región, integrando innovación, identidad local y conciencia ambiental.</p>
+            </div>
+            <div class="mv-card">
+                <div style="font-size:2.5rem; text-align:center; margin-bottom:0.5rem;">💚</div>
+                <h3>Valores</h3>
+                <ul style="text-align:left;">
+                    <li>Compromiso ambiental</li>
+                    <li>Innovación</li>
+                    <li>Trabajo en equipo</li>
+                    <li>Servicio a la comunidad</li>
+                    <li>Respeto y honestidad</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="historia" data-aos="fade-up">
+        <h2>Nuestra Historia</h2>
+        <p>Comenzó hace años, cuando nos conocimos como estudiantes universitarios cursando la asignatura de Emprendimiento Productivo. En aquel entonces, no sabíamos que esa materia sembraría no solo ideas de negocio, sino también una amistad profunda y una visión compartida que, con el tiempo, se transformaría en una sólida realidad empresarial.</p>
+        <p>A lo largo de los años, cada uno forjó su camino profesional, pero mantuvimos siempre el contacto y la firme intención de emprender juntos. La oportunidad se hizo evidente durante una visita al Río Partido, un lugar con el que nuestro socio y amigo MSc. Oliver de la Rosa, residente de Villa Trina, estaba familiarizado. Fue su conocimiento in situ del área lo que nos permitió identificar la disparidad entre el creciente flujo turístico y la limitada infraestructura de servicios. Observamos la ausencia de espacios donde los visitantes pudieran acceder a productos y servicios esenciales de manera práctica y cómoda, sin alejarse de la naturaleza circundante. Esta brecha de mercado fue el catalizador que nos impulsó a actuar.</p>
+        <p>Fue así como, con recursos propios y la convicción de generar un impacto positivo, decidimos unir fuerzas para dar vida a Eco Plaza YESCORD. Esta iniciativa es el resultado del compromiso de un grupo de profesionales con el desarrollo local. Concebimos esta plaza no solo como un complemento a la experiencia del visitante, sino también como un motor para fortalecer la economía local y promover el desarrollo sostenible de la provincia Espaillat.</p>
+        <p>Hoy, Eco Plaza YESCORD trasciende el concepto de un simple negocio. Es la materialización de una visión construida entre amigos, una apuesta por el turismo responsable y un homenaje a nuestras raíces.</p>
+    </section>
+    <section class="section" id="contacto" data-aos="fade-up">
+        <h2>Contacto</h2>
+        <p>Correo electrónico: info@ecoplazayescord.com</p>
+        <p>Teléfono: 809-710-9154</p>
+        <div class="social">
+            <a href="#" title="Facebook">Facebook</a>
+            <a href="#" title="Instagram">Instagram</a>
+            <a href="#" title="Twitter">Twitter</a>
+        </div>
+    </section>
+    <section class="section" id="locales">
+        <h2>Locales Comerciales</h2>
+        <div class="locales-grid">
+            <div class="card">
+                <img src="restaurantealjenis.png" alt="Restaurante Aljenis" class="img-local" />
+                <h3 class="titulo-local">🍽️ Restaurante Aljenis</h3>
+                <p class="desc-local">El Restaurante Aljenis es el alma culinaria de nuestra plaza. Especializado en comida criolla auténtica, ofrece una variedad de platos tradicionales dominicanos elaborados con ingredientes frescos de la zona. Ideal para quienes desean disfrutar del verdadero sabor local, tanto visitantes como residentes podrán degustar desde mofongos, pescados frescos, carnes guisadas, hasta postres típicos, todo en un ambiente acogedor y familiar.</p>
+            </div>
+            <div class="card">
+                <img src="delfindemocalogo.png" alt="Delfín de Moca" class="img-local" />
+                <h3 class="titulo-local">🏖️ Delfín de Moca – Artículos Acuáticos</h3>
+                <p class="desc-local">Delfín de Moca es tu parada obligatoria antes de llegar al Río Partido. Esta tienda especializada ofrece una selección completa de artículos acuáticos y recreativos, incluyendo flotadores, bloqueadores solares, neveritas plásticas, sandalias, toallas y mucho más. Perfecta para prepararte para un día inolvidable junto al río, con seguridad y comodidad.</p>
+            </div>
+            <div class="card">
+                <img src="carollogo.png" alt="Farmacia Carol" class="img-local" />
+                <h3 class="titulo-local">💊 Farmacia Carol</h3>
+                <p class="desc-local">Farmacia Carol, una marca reconocida in todo el país, está presente en Eco Plaza YESCORD para brindar tranquilidad y respaldo a la comunidad y visitantes. Aquí encontrarás medicamentos de venta libre y con receta, productos de primeros auxilios, cuidado personal, vitaminas, artículos de higiene, entre otros. Ya sea para una necesidad médica o una compra preventiva, la farmacia está equipada para servirte con profesionalismo.</p>
+            </div>
+            <div class="card">
+                <img src="ecocafe.png" alt="EcoCafé" class="img-local" />
+                <h3 class="titulo-local">☕ EcoCafé</h3>
+                <p class="desc-local">En EcoCafé celebramos el sabor auténtico de la región. Este espacio acogedor ofrece café orgánico cultivado localmente, además de infusiones naturales y repostería artesanal. Nuestro enfoque es ecológico y sostenible, apoyando a caficultores de la zona y promoviendo una experiencia sensorial que conecta al visitante con el espíritu montañoso de Espaillat.</p>
+            </div>
+            <div class="card">
+                <img src="heladosyeyos.png" alt="Heladería Don Yeyo" class="img-local" />
+                <h3 class="titulo-local">🍦 Heladería Don Yeyo</h3>
+                <p class="desc-local">Helados Don Yeyo es una propuesta dulce que nace desde y para la comunidad. Elaborados de manera artesanal, nuestros helados ofrecen sabores únicos con frutas locales y recetas tradicionales. Además de deleitar a los turistas, esta heladería brinda una fuente directa de ingresos a pequeños productores y familias emprendedoras de la zona.</p>
+            </div>
+            <div class="card">
+                <img src="Minimarketelbambu.png" alt="Mini Market El Bambú" class="img-local" />
+                <h3 class="titulo-local">🛒 Mini Market El Bambú</h3>
+                <p class="desc-local">El Mini Market El Bambú es un negocio local que se adapta a las necesidades diarias tanto de la comunidad como de los turistas. Aquí podrás encontrar una variedad de productos esenciales como alimentos, bebidas, productos de limpieza, snacks, productos frescos y más. Todo en un solo lugar, con la atención cálida que caracteriza al comercio local.</p>
+            </div>
+            <div class="card">
+                <img src="Logo bancos.png" alt="Cajeros Automáticos" class="img-local" />
+                <h3 class="titulo-local">🏧 Cajeros Automáticos</h3>
+                <p class="desc-local">Para tu comodidad, en Eco Plaza YESCORD contamos con dos cajeros automáticos de los principales bancos del país:</p>
+                <ul style="text-align:left;">
+                  <li>Banco Popular Dominicano</li>
+                  <li>Banreservas</li>
+                </ul>
+                <p class="desc-local">Ubicados estratégicamente dentro del complejo, estos cajeros garantizan que tanto locales como visitantes puedan realizar sus transacciones de manera rápida y segura, sin salir de la plaza.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="mapa-ubicacion" style="margin-top:2.5rem;">
+        <h2 style="text-align:center; color:#2C8E6F;">¿Dónde estamos?</h2>
+        <div style="display:flex; justify-content:center; align-items:center; margin-top:2rem;">
+            <div style="width:100%; max-width:540px; background:#eafaf3; border-radius:18px; box-shadow:0 4px 24px #00b89422; padding:1.5rem;">
+                <img src="LA PLAZA.png" alt="Mapa de ubicación de la plaza" style="width:100%; border-radius:12px; box-shadow:0 2px 16px #00b89422; display:block;">
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:1.5rem; color:#2C8E6F; font-weight:500;">Carretera Palma Herrada, comunidad de Partido, municipio de moca, provincia Espaillat, República Dominicana.</p>
+    </section>
+    <section class="section" id="testimonios">
+        <h2 style="text-align:center;">Testimonios de Clientes Satisfechos</h2>
+        <div class="testimonios-grid">
+            <div class="testimonio-card">
+                <p>"¡Un lugar hermoso y muy completo! Encontré todo lo que necesitaba y el ambiente es muy agradable."</p>
+                <span>- María González.</span>
+            </div>
+            <div class="testimonio-card">
+                <p>"La heladería artesanal es mi favorita. Además, la plaza es muy limpia y segura."</p>
+                <span>- Juan Pablo Acosta.</span>
+            </div>
+            <div class="testimonio-card">
+                <p>"Excelente atención y variedad de servicios. Volveré con mi familia."</p>
+                <span>- Laura Ruiz.</span>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="faq">
+        <h2 style="text-align:center;">Preguntas Frecuentes</h2>
+        <div class="faq-accordion">
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-btn">¿Cuál es la política de acceso y seguridad para visitantes y vehículos?</button>
+                <div class="faq-accordion-panel">
+                    <p>El acceso a YESCORD está controlado por personal de seguridad y cámaras 24/7. Los vehículos deben registrarse en la entrada y los visitantes recibirán una orientación sobre las áreas permitidas y normas de convivencia.</p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-btn">¿Qué facilidades existen para personas con movilidad reducida?</button>
+                <div class="faq-accordion-panel">
+                    <p>Contamos con rampas de acceso, baños adaptados, señalización especial y parqueos reservados para personas con movilidad reducida en toda la plaza.</p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-btn">¿Cómo se gestionan los residuos y qué iniciativas ecológicas implementa la plaza?</button>
+                <div class="faq-accordion-panel">
+                    <p>YESCORD implementa un sistema de reciclaje, puntos de recolección selectiva y campañas de reducción de plásticos. Además, promovemos el uso de empaques biodegradables y energía renovable en los locales.</p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-btn">¿Qué servicios digitales y conectividad ofrece la plaza?</button>
+                <div class="faq-accordion-panel">
+                    <p>Ofrecemos Wi-Fi de alta velocidad gratuito, zona de carga para dispositivos móviles, y una app informativa para consultar horarios, eventos y promociones en tiempo real.</p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-btn">¿Existen protocolos de emergencia y primeros auxilios en el recinto?</button>
+                <div class="faq-accordion-panel">
+                    <p>Sí, contamos con personal capacitado en primeros auxilios, desfibrilador externo automático (DEA), señalización de rutas de evacuación y simulacros periódicos de emergencia.</p>
+                </div>
+            </div>
+            <div class="faq-accordion-item">
+                <button class="faq-accordion-btn">¿Cómo puedo solicitar información sobre alquiler de locales o espacios para eventos?</button>
+                <div class="faq-accordion-panel">
+                    <p>Puedes contactarnos a través del formulario web, correo electrónico o directamente en la administración de YESCORD para recibir asesoría personalizada sobre alquileres y eventos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer data-aos="fade-up">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div class="footer-social" style="text-align:center; margin-bottom:0.5rem;">
+                <a href="https://facebook.com" target="_blank" title="Facebook" class="footer-icon">
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M29 0H3C1.343 0 0 1.343 0 3v26c0 1.657 1.343 3 3 3h13V20h-4v-5h4v-3.5C16 7.57 18.239 6 21.5 6c1.262 0 2.5.094 2.5.094V10h-1.406C20.672 10 20 10.672 20 11.5V15h5l-1 5h-4v12h6c1.657 0 3-1.343 3-3V3c0-1.657-1.343-3-3-3z"/></svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" title="Instagram" class="footer-icon">
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 7.2A8.8 8.8 0 1 0 24.8 16 8.8 8.8 0 0 0 16 7.2zm0 14.4A5.6 5.6 0 1 1 21.6 16 5.6 5.6 0 0 1 16 21.6zm8.96-14.56a2.08 2.08 0 1 1-2.08-2.08 2.08 2.08 0 0 1 2.08 2.08zm5.92 2.12a6.13 6.13 0 0 0-1.68-4.32A6.13 6.13 0 0 0 27.44.72C25.6 0 16 0 16 0S6.4 0 4.56.72A6.13 6.13 0 0 0 .72 4.56C0 6.4 0 16 0 16s0 9.6.72 11.44a6.13 6.13 0 0 0 3.84 3.84C6.4 32 16 32 16 32s9.6 0 11.44-.72a6.13 6.13 0 0 0 3.84-3.84C32 25.6 32 16 32 16s0-9.6-.72-11.44zM28.8 28.8a3.36 3.36 0 0 1-2.4 2.4c-1.68.64-5.68.48-10.4.48s-8.72.16-10.4-.48a3.36 3.36 0 0 1-2.4-2.4c-.64-1.68-.48-5.68-.48-10.4s-.16-8.72.48-10.4a3.36 3.36 0 0 1 2.4-2.4C7.28.16 11.28 0 16 0s8.72-.16 10.4.48a3.36 3.36 0 0 1 2.4 2.4c.64 1.68.48 5.68.48 10.4s.16 8.72-.48 10.4z"/></svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" title="Twitter" class="footer-icon">
+                    <!-- Aquí puedes agregar el SVG de Twitter si lo deseas -->
+                </a>
+            </div>
+            <div class="footer-links" style="text-align:center; margin:0.5rem 0 0.2rem 0;">
+                <a href="#inicio">Inicio</a> |
+                <a href="#locales">Tiendas</a> |
+                <a href="#contacto">Contacto</a> |
+                <a href="privacidad.html" target="_blank">Política de Privacidad</a> |
+                <a href="terminos.html" target="_blank">Términos y Condiciones</a>
+            </div>
+            <p style="text-align:center; margin:0.2rem 0 0 0;">© 2025 Ecoplaza YESCORD. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <!-- AOS Animate On Scroll JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 900,
+        once: true
+      });
+    </script>
+    <script>
+      // Efecto de scroll para navbar tipo Sambil
+      window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('main-navbar');
+        if(window.scrollY > 20) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    </script>
+    <script>
+      // Script para el acordeón de preguntas frecuentes
+      document.querySelectorAll('.faq-accordion-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          const panel = item.querySelector('.faq-accordion-panel');
+          const isActive = item.classList.contains('active');
+
+          // Cerrar todos los paneles
+          document.querySelectorAll('.faq-accordion-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.faq-accordion-panel').style.display = 'none';
+          });
+
+          // Abrir el panel clicado si no estaba activo
+          if(!isActive) {
+            item.classList.add('active');
+            panel.style.display = 'block';
+          }
+        });
+      });
+    </script>
+    <script>
+      // Acordeón para FAQ
+      document.querySelectorAll('.faq-accordion-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const panel = this.nextElementSibling;
+          const isActive = this.classList.contains('active');
+          document.querySelectorAll('.faq-accordion-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.faq-accordion-panel').forEach(p => p.classList.remove('show'));
+          if (!isActive) {
+            this.classList.add('active');
+            panel.classList.add('show');
+          }
+        });
+      });
+    </script>
+    <script>
+      // Modal de tiendas
+      const tiendasInfo = {
+        carol: {
+          titulo: 'Farmacia Carol',
+          descripcion: 'Farmacia Carol es tu aliada en salud, ubicada en el Nivel 2. Ofrece medicamentos esenciales, productos de cuidado personal y asesoría profesional para toda la familia. Aquí encuentras desde analgésicos y antibióticos hasta vitaminas, productos para bebés y artículos de primeros auxilios.',
+          imagen: 'carollogo.png',
+          nivel: '2',
+          servicios: `<div style='text-align:left;'>
+            <h4 style='color:#0074D9;'>Productos destacados</h4>
+            <ul style='margin-bottom:0.7rem;'>
+              <li>Medicamentos de venta libre y con receta</li>
+              <li>Vitaminas y suplementos</li>
+              <li>Productos para bebés (pañales, fórmulas, cremas)</li>
+              <li>Artículos de higiene y cuidado personal</li>
+              <li>Termómetros, alcohol, algodón</li>
+              <li>Protección solar y repelentes</li>
+            </ul>
+          </div>`
+        },
+        bambu: {
+          titulo: 'Mini-market El Bambú',
+          descripcion: 'Mini-market El Bambú, en el Nivel 1, es el lugar ideal para tus compras rápidas y cotidianas. Aquí encuentras productos frescos, víveres, snacks, bebidas frías, artículos de limpieza y todo lo esencial para el hogar o tu paseo.',
+          imagen: 'Minimarketelbambu.png',
+          nivel: '1',
+          servicios: `<div style='text-align:left;'>
+            <h4 style='color:#0074D9;'>Productos disponibles</h4>
+            <ul style='margin-bottom:0.7rem;'>
+              <li>Frutas y verduras frescas</li>
+              <li>Snacks y golosinas</li>
+              <li>Bebidas frías y jugos naturales</li>
+              <li>Productos de limpieza y desinfección</li>
+              <li>Artículos de uso personal</li>
+              <li>Comida rápida y preparada</li>
+            </ul>
+          </div>`
+        },
+        helados: {
+          titulo: 'Heladería Don Yeyo',
+          descripcion: 'Heladería Don Yeyo es famosa por sus helados artesanales elaborados con recetas tradicionales y frutas frescas de la región. Un lugar de encuentro para disfrutar de un dulce momento en familia o con amigos.',
+          imagen: 'heladosyeyos.png',
+          nivel: '1',
+          servicios: `<div style='text-align:left;'>
+            <h4 style='color:#0074D9;'>Sabores destacados</h4>
+            <ul style='margin-bottom:0.7rem;'>
+              <li>Helado de mango con chile</li>
+              <li>Helado de coco con piña</li>
+              <li>Helado de guanábana</li>
+              <li>Helado de café con leche</li>
+              <li>Helado de vainilla con frutas</li>
+              <li>Helado de chocolate amargo</li>
+            </ul>
+          </div>`
+        },
+        aljenis: {
+          titulo: 'Restaurante Aljenis',
+          descripcion: 'El Restaurante Aljenis ofrece una experiencia culinaria única con un menú que resalta los sabores auténticos de la comida criolla. Un lugar acogedor donde cada plato es preparado con esmero y dedicación.',
+          imagen: 'restaurantealjenis.png',
+          nivel: '1',
+          servicios: `<div style='text-align:left;'>
+            <h4 style='color:#0074D9;'>Platos recomendados</h4>
+            <ul style='margin-bottom:0.7rem;'>
+              <li>Mofongo con carne</li>
+              <li>Pescaíto frito con tostones</li>
+              <li>Pollo guisado con arroz</li>
+              <li>Sancocho de siete carnes</li>
+              <li>Ensalada verde fresca</li>
+              <li>Flan de coco</li>
+            </ul>
+          </div>`
+        },
+        ecocafe: {
+          titulo: 'EcoCafé',
+          descripcion: 'EcoCafé es el lugar perfecto para disfrutar de un buen café orgánico acompañado de repostería artesanal. Un espacio que invita a relajarse y disfrutar de los sabores de la región.',
+          imagen: 'ecocafe.png',
+          nivel: '1',
+          servicios: `<div style='text-align:left;'>
+            <h4 style='color:#0074D9;'>Nuestra selección de cafés</h4>
+            <ul style='margin-bottom:0.7rem;'>
+              <li>Café orgánico de la Sierra de Espaillat</li>
+              <li>Expreso doble</li>
+              <li>Cappuccino clásico</li>
+              <li>Latte macchiato</li>
+              <li>Mocha con chocolate local</li>
+              <li>Infusiones de hierbas naturales</li>
+            </ul>
+          </div>`
+        },
+        delfin: {
+          titulo: 'Delfín de Moca',
+          descripcion: 'Delfín de Moca es una tienda especializada en artículos acuáticos, perfecta para los amantes de la playa y el río. Aquí encontrarás todo lo necesario para disfrutar de un día de diversión acuática.',
+          imagen: 'delfindemocalogo.png',
+          nivel: '2',
+          servicios: `<div style='text-align:left;'>
+            <h4 style='color:#0074D9;'>Artículos disponibles</h4>
+            <ul style='margin-bottom:0.7rem;'>
+              <li>Flotadores y colchonetas</li>
+              <li>Bloqueadores solares</li>
+              <li>Neveritas plásticas</li>
+              <li>Sandalias y toallas</li>
+              <li>Ropa de baño y accesorios</li>
+              <li>Juguetes acuáticos</li>
+            </ul>
+          </div>`
+        }
+      };
+      document.querySelectorAll('.ver-mas-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const tienda = this.getAttribute('data-tienda');
+          const info = tiendasInfo[tienda];
+          if(info) {
+            document.getElementById('contenido-modal-tienda').innerHTML = `
+              <h2 style="text-align:center; color:#0074D9;">${info.titulo}</h2>
+              <img src="${info.imagen}" alt="${info.titulo}" style="width:100%; border-radius:10px; margin-bottom:1rem;">
+              <p style="text-align:justify;">${info.descripcion}</p>
+              ${info.servicios ? `<div style="text-align:left; margin-top:1rem;">${info.servicios}</div>` : ''}
+            `;
+            document.getElementById('modal-tienda').style.display = 'flex';
+          }
+        });
+      });
+      document.getElementById('cerrar-modal-tienda').addEventListener('click', function() {
+        document.getElementById('modal-tienda').style.display = 'none';
+      });
+      window.addEventListener('click', function(event) {
+        const modal = document.getElementById('modal-tienda');
+        if(event.target == modal) {
+          modal.style.display = 'none';
+        }
+      });
+    </script>
+</body>
+</html>
